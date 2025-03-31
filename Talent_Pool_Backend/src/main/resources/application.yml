@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: Talent_Pool_Backend
+server:
+  port: 8080
