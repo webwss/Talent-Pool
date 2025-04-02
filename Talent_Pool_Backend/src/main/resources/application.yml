@@ -1,5 +1,44 @@
 spring:
   application:
     name: Talent_Pool_Backend
+  profiles:
+    active: dev
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  session:
+    store-type: redis
+    timeout: 2592000
+  redis:
+    database: 0
+    host: 192.168.37.105
+    port: 6379
+    password: "123456"
+    timeout: 3000
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
 server:
   port: 8080
+  servlet:
+    context-path: /api
+    session:
+      cookie:
+        max-age: 2592000
+mybatis-plus:
+  type-aliases-package: cn.webwss.talent_pool_backend.model.entity
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+# 接口文档配置
+knife4j:
+  enable: true
+  openapi:
+    title: "接口文档"
+    version: 1.0
+    group:
+      default:
+        api-rule: package
+        api-rule-resources:
+          - cn.webwss.talent_pool_backend.controller
