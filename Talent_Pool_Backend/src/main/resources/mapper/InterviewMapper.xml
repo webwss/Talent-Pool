@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.webwss.talent_pool_backend.mapper.InterviewMapper">
+
+    <resultMap id="BaseResultMap" type="cn.webwss.talent_pool_backend.model.entity.Interview">
+            <id property="interviewId" column="interview_id" />
+            <result property="talentId" column="talent_id" />
+            <result property="reservationStaff" column="reservation_staff" />
+            <result property="interviewer" column="interviewer" />
+            <result property="interviewTime" column="interview_time" />
+            <result property="interviewAssess" column="interview_assess" />
+            <result property="createTime" column="create_time" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        interview_id,talent_id,reservation_staff,interviewer,interview_time,interview_assess,
+        create_time
+    </sql>
+</mapper>
