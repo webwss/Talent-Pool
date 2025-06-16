@@ -1,2 +1,26 @@
+spring:
+  profiles:
+    active: local
+
 server:
   port: 9123
+  servlet:
+    context-path: /api
+    session:
+      cookie:
+        max-age: 2592000
+
+mybatis-plus:
+  type-aliases-package: cn.webwss.backend.model.entity
+  mapper-locations: classpath:mapper/*.xml
+# 接口文档配置
+knife4j:
+  enable: true
+  openapi:
+    title: "接口文档"
+    version: 1.0
+    group:
+      default:
+        api-rule: package
+        api-rule-resources:
+          - cn.webwss.backend.controller
