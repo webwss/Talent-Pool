@@ -1,5 +1,6 @@
 package cn.webwss.backend.service;
 
+import cn.webwss.backend.model.dto.education.EducationEditDTO;
 import cn.webwss.backend.model.entity.Education;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -10,4 +11,27 @@ import com.baomidou.mybatisplus.extension.service.IService;
 */
 public interface EducationService extends IService<Education> {
 
+
+    /**
+     * 添加学历
+     * @param educationName
+     * @return
+     */
+    Boolean addEducation(String educationName);
+
+
+    /**
+     * 删除学历
+     * @param educationId
+     * @return
+     */
+    Boolean deleteEducation(Integer educationId);
+
+
+    /**
+     * 修改学历
+     * @param educationEditDTO
+     * @return
+     */
+    Boolean editEducation(EducationEditDTO educationEditDTO);
 }
