@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.webwss.backend.mapper.TalentMapper">
+
+    <resultMap id="BaseResultMap" type="cn.webwss.backend.model.entity.Talent">
+            <id property="talentId" column="talent_id" />
+            <result property="name" column="name" />
+            <result property="postId" column="post_id" />
+            <result property="educationId" column="education_id" />
+            <result property="phone" column="phone" />
+            <result property="sex" column="sex" />
+            <result property="age" column="age" />
+            <result property="marriage" column="marriage" />
+            <result property="photo" column="photo" />
+            <result property="currentSalary" column="current_salary" />
+            <result property="expectedSalary" column="expected_salary" />
+            <result property="jobStatus" column="job_status" />
+            <result property="jobYear" column="job_year" />
+            <result property="address" column="address" />
+            <result property="currentPost" column="current_post" />
+            <result property="reasonForLeaving" column="reason_for_leaving" />
+            <result property="advantage" column="advantage" />
+            <result property="disadvantage" column="disadvantage" />
+            <result property="result" column="result" />
+            <result property="nextInterviewTime" column="next_interview_time" />
+            <result property="createTime" column="create_time" />
+            <result property="editTime" column="edit_time" />
+            <result property="editSum" column="edit_sum" />
+            <result property="delStatus" column="del_status" />
+            <result property="delReason" column="del_reason" />
+            <result property="createStaffId" column="create_staff_id" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        talent_id,name,post_id,education_id,phone,sex,
+        age,marriage,photo,current_salary,expected_salary,
+        job_status,job_year,address,current_post,reason_for_leaving,
+        advantage,disadvantage,result,next_interview_time,create_time,
+        edit_time,edit_sum,del_status,del_reason,create_staff_id
+    </sql>
+</mapper>
