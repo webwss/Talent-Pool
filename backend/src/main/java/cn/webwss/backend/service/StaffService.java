@@ -2,9 +2,12 @@ package cn.webwss.backend.service;
 
 import cn.webwss.backend.model.dto.staff.StaffEditDTO;
 import cn.webwss.backend.model.entity.Staff;
+import cn.webwss.backend.model.vo.data.SendAdminVO;
+import cn.webwss.backend.model.vo.data.SendStaffVO;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
 * @author admin
@@ -49,4 +52,22 @@ public interface StaffService extends IService<Staff> {
      * @return
      */
     boolean deleteStaff(Integer staffId);
+
+    /**
+     * 获取管理员列表
+     * @return
+     */
+    List<Staff> getAdminList();
+
+    /**
+     * 发送管理员数据
+     * @return
+     */
+    List<SendAdminVO> sendAdminData();
+
+    /**
+     * 发送员工数据
+     * @return
+     */
+    List<SendStaffVO> sendStaffData();
 }

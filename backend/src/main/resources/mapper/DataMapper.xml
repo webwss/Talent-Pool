@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.webwss.backend.mapper.DataMapper">
+
+
+<!--    获取各岗位人才数量-->
+<!--    List<Map<String, Object>> postTalentCount(Integer staffId);-->
+    <select id="postTalentCount" resultType="java.util.Map">
+        SELECT
+            p.post_id AS postId,
+            p.post_name AS postName,
+            COUNT(t.talent_id) AS talentCount
+        FROM
+            post p
+                LEFT JOIN
+            talent t ON p.post_id = t.post_id
+        WHERE
+            t.create_staff_id = #{creatorId}
+        GROUP BY
+            p.post_id, p.post_name
+        ORDER BY
+            talentCount DESC
+    </select>
+
+
+    <!--    获取各岗位人才数量-->
+    <!--    List<Map<String, Object>> totalPostTalentCount();-->
+    <select id="totalPostTalentCount" resultType="java.util.Map">
+        SELECT
+            p.post_id AS postId,
+            p.post_name AS postName,
+            COUNT(t.talent_id) AS talentCount
+        FROM
+            post p
+                LEFT JOIN
+            talent t ON p.post_id = t.post_id
+        GROUP BY
+            p.post_id, p.post_name
+        ORDER BY
+            talentCount DESC
+    </select>
+
+
+    <!--    获取各学历人才数量-->
+    <!--    List<Map<String, Object>> educationTalentCount(Integer staffId);-->
+    <select id="educationTalentCount" resultType="java.util.Map">
+        SELECT
+            e.education_id AS educationId,
+            e.education_name AS educationName,
+            COUNT(t.talent_id) AS talentCount
+        FROM
+            education e
+                LEFT JOIN
+            talent t ON e.education_id = t.education_id
+        WHERE
+            t.create_staff_id = #{creatorId}
+        GROUP BY
+            e.education_id, e.education_name
+        ORDER BY
+            talentCount DESC
+    </select>
+
+    <!--    获取各学历人才数量-->
+    <!--    List<Map<String, Object>> educationTalentCount(Integer staffId);-->
+    <select id="totalEducationTalentCount" resultType="java.util.Map">
+        SELECT
+            e.education_id AS educationId,
+            e.education_name AS educationName,
+            COUNT(t.talent_id) AS talentCount
+        FROM
+            education e
+                LEFT JOIN
+            talent t ON e.education_id = t.education_id
+        GROUP BY
+            e.education_id, e.education_name
+        ORDER BY
+            talentCount DESC
+    </select>
+
+</mapper>

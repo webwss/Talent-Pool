@@ -6,6 +6,8 @@ import cn.webwss.backend.exception.ErrorCode;
 import cn.webwss.backend.mapper.TalentMapper;
 import cn.webwss.backend.model.dto.staff.StaffEditDTO;
 import cn.webwss.backend.model.entity.Talent;
+import cn.webwss.backend.model.vo.data.SendAdminVO;
+import cn.webwss.backend.model.vo.data.SendStaffVO;
 import cn.webwss.backend.model.vo.login.WxUserInfoVO;
 import cn.webwss.backend.utils.WechatUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -13,10 +15,16 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import cn.webwss.backend.model.entity.Staff;
 import cn.webwss.backend.service.StaffService;
 import cn.webwss.backend.mapper.StaffMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import static cn.webwss.backend.constant.StaffConstant.STAFF_LOGIN_STATE;
 
@@ -35,6 +43,9 @@ public class StaffServiceImpl extends ServiceImpl<StaffMapper, Staff>
 
     @Resource
     private TalentMapper talentMapper;
+
+    @Resource
+    private StaffMapper staffMapper;
 
     /**
      * 微信登录
@@ -149,6 +160,67 @@ public class StaffServiceImpl extends ServiceImpl<StaffMapper, Staff>
             throw new BusinessException(ErrorCode.OPERATION_ERROR, "员工删除失败");
         }
         return true;
+    }
+
+    /**
+     * 获取管理员列表
+     * @return
+     */
+
+    @Override
+    public List<Staff> getAdminList() {
+        QueryWrapper<Staff> staffQueryWrapper = new QueryWrapper<>();
+        staffQueryWrapper.eq("role", "admin");
+        return staffMapper.selectList(staffQueryWrapper);
+    }
+
+    /**
+     * 发送管理员数据
+     * @return
+     */
+    @Override
+    public List<SendAdminVO> sendAdminData() {
+        List<SendAdminVO> sendAdminVOList = new ArrayList<>();
+//        获取所有员工列表
+        List<Staff> staff = staffMapper.selectList(null);
+//        获取昨天日期
+        LocalDate yesterday = LocalDate.now().minusDays(1);
+        staff.forEach(staff1 -> {
+            QueryWrapper<Talent> talentQueryWrapper = new QueryWrapper<>();
+            talentQueryWrapper.eq("create_staff_id", staff1.getStaffId());
+            talentQueryWrapper.like("create_time", yesterday);
+            Long l = talentMapper.selectCount(talentQueryWrapper);
+            SendAdminVO  sendAdminVO = new SendAdminVO();
+            sendAdminVO.setStaffId(staff1.getStaffId());
+            sendAdminVO.setName(staff1.getName());
+            sendAdminVO.setCount(l);
+            sendAdminVOList.add(sendAdminVO);
+        });
+        return sendAdminVOList;
+    }
+
+    /**
+     * 发送员工数据
+     * @return
+     */
+    @Override
+    public List<SendStaffVO> sendStaffData() {
+//        获取当前日期
+        LocalDate now = LocalDate.now();
+        QueryWrapper<Talent> talentQueryWrapper = new QueryWrapper<>();
+        System.out.println("now" + now);
+        talentQueryWrapper.like("next_interview_time", now);
+        List<Talent> list = talentMapper.selectList(talentQueryWrapper);
+        List<SendStaffVO> sendStaffVOList = new ArrayList<>();
+        list.forEach(talent -> {
+            SendStaffVO sendStaffVO = new SendStaffVO();
+            sendStaffVO.setTalentId(talent.getTalentId());
+            sendStaffVO.setName(talent.getName());
+            sendStaffVO.setNextInterviewTime(talent.getNextInterviewTime());
+            sendStaffVO.setCreateStaffId(talent.getCreateStaffId());
+            sendStaffVOList.add(sendStaffVO);
+        });
+        return sendStaffVOList;
     }
 }
 
