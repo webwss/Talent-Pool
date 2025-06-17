@@ -30,6 +30,13 @@ public class Resume implements Serializable {
      */
     private String resumeUrl;
 
+    /**
+     * 相关面试题
+     */
+    @TableField(exist = false)
+    private ResumeRequestion resumeRequestion;
+
+
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 }

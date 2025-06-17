@@ -10,4 +10,19 @@ import com.baomidou.mybatisplus.extension.service.IService;
 */
 public interface ResumeRequestionService extends IService<ResumeRequestion> {
 
+    /**
+     * 根据简历ID生成面试题目
+     *
+     * @param resumeId
+     * @return
+     */
+    Boolean generateQuestions(Integer resumeId);
+
+    /**
+     * 获取面试题目
+     * @param resumeId
+     * @return
+     */
+    ResumeRequestion getQuestions(Integer resumeId);
+
 }
