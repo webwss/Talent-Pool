@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.webwss.backend.mapper.InteractMapper">
+
+    <resultMap id="BaseResultMap" type="cn.webwss.backend.model.entity.Interact">
+            <id property="interactId" column="interact_id" />
+            <result property="talentId" column="talent_id" />
+            <result property="interactStaff" column="interact_staff" />
+            <result property="interactTime" column="interact_time" />
+            <result property="interactContent" column="interact_content" />
+            <result property="createTime" column="create_time" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        interact_id,talent_id,interact_staff,interact_time,interact_content,create_time
+    </sql>
+</mapper>
