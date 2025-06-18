@@ -1,10 +1,9 @@
 <script setup lang="ts">
 
-
 </script>
 
 <template>
-  初始化
+  HomePage
 </template>
 
 <style scoped>

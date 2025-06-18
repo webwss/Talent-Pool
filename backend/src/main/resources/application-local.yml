@@ -1,0 +1,33 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/talent_pool
+    username: root
+    password: 123456
+  session:
+    store-type: redis
+    timeout: 2592000
+  redis:
+
+    database: 4
+    host: 123.60.29.10
+    port: 6379
+    password: 123456
+    timeout: 3000
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+
+wx:
+  corpId: "wwcb7eb570ad1869ab"
+  corpSecret: "L7yl41HctRSZRA53KyVYh-_Vdt_qhYk8WGjzS-A07a8"
+qn:
+  accessKey: "94yEdd1x3BUsI1F5iejbnsC5saF9NZmRUzCdK2o5"
+  secretKey: "0t88jgIAZ92oxqHLTDgHTcYJPahM6SNpvlyJ-dtM"
+  bucket: "jiananpump"
+  domain: "jiananpump-img.jiananpump.com"
+  path: "talent_pool/"
+ai:
+  openai:
+    apiKey: "sk-5798324ac62c4dbbb40533ebb1cbe85f"
