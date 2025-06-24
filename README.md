@@ -50,23 +50,23 @@
   
     - 登录
   
-    ![image-20250624094014189](https://github.com/webwss/Talent-Pool/img/image-20250624094014189.png)
+    ![image-20250624094014189](https://github.com/webwss/Talent-Pool/blob/main/img/image-20250624094014189.png)
   
     - 数据看板
   
-    ![image-20250624094501668](https://github.com/webwss/Talent-Pool/img/image-20250624094501668.png)
+    ![image-20250624094501668](https://github.com/webwss/Talent-Pool/blob/main/img/image-20250624094501668.png)
   
     - 人才库
   
-    ![image-20250624094632406](https://github.com/webwss/Talent-Pool/img/image-20250624094632406.png)
+    ![image-20250624094632406](https://github.com/webwss/Talent-Pool/blob/main/img/image-20250624094632406.png)
   
     - 人才详情
   
-    ![image-20250624094656794](https://github.com/webwss/Talent-Pool/img/image-20250624094656794.png)
+    ![image-20250624094656794](https://github.com/webwss/Talent-Pool/blob/main/img/image-20250624094656794.png)
   
     - 新增人才
   
-    ![image-20250624094712087](https://github.com/webwss/Talent-Pool/img/image-20250624094712087.png)
+    ![image-20250624094712087](https://github.com/webwss/Talent-Pool/blob/main/img/image-20250624094712087.png)
   
     ## 使用说明
   
